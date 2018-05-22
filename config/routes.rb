@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  resources :pokemon, only: %i[index show]
+  root 'home#index', as: 'home'
 
-  # resources :pokemon do
+  # Routes for pokemons
+  resources :pokemons
+
+  # pokemons :pokemons do
   #   member do
   #     get :index
   #   end
