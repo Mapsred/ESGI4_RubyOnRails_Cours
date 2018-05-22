@@ -2,7 +2,7 @@
 
 # PokemonsController
 class PokemonsController < ApplicationController
-  before_action :fetch_pokemon, only: %i[show edit update]
+  before_action :fetch_pokemon, only: %i[show edit update destroy]
 
   def fetch_pokemon
     @pokemon = Pokemon.find(params[:id])
@@ -41,6 +41,10 @@ class PokemonsController < ApplicationController
     else
       render action: :edit
     end
+  end
+
+  def destroy
+    @pokemon.destroy
   end
 
   def pokemon_parameters
