@@ -45,6 +45,8 @@ class PokemonsController < ApplicationController
 
   def destroy
     @pokemon.destroy
+
+    redirect_to pokemons_url
   end
 
   def pokemon_parameters
