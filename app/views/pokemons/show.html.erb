@@ -1,5 +1,9 @@
 <h1>Afficher un pokémon</h1>
 
-<p>Nom : <%= @pokemon.name %> </p>
+<p><strong>Numéro :</strong> <%= @pokemon.number %> </p>
+<p><strong>Nom :</strong> <%= @pokemon.name %> </p>
+<p><strong>Niveau :</strong> <%= @pokemon.level %> </p>
+<p><strong>HP :</strong> <%= @pokemon.health_points %> </p>
 
-
+<a href="<%= pokemons_path %>" class="btn btn-default">Retour à la liste</a>
+<a href="<%= edit_pokemon_path @pokemon %>" class="btn btn-warning">Editer le pokémon</a>

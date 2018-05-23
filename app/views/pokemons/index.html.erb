@@ -10,8 +10,10 @@
       <table class="table">
         <thead>
         <tr>
-          <th>ID</th>
+          <th>#</th>
           <th>Nom</th>
+          <th>Niveau</th>
+          <th>HP</th>
           <th>
             <div class="col-md-2 col-md-offset-10">Action</div>
           </th>
@@ -20,8 +22,10 @@
         <tbody>
         <% @pokemons.each do |pokemon| %>
           <tr>
-            <td><%= pokemon.id %></td>
+            <td><%= pokemon.number %></td>
             <td><%= pokemon.name %></td>
+            <td><%= pokemon.level %></td>
+            <td><%= pokemon.health_points %></td>
             <td>
               <div class="btn-group pull-right">
                 <a href="<%= pokemon_path pokemon %>" class="btn btn-success">
