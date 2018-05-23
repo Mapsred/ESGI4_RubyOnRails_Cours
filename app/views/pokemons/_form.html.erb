@@ -1,20 +1,19 @@
-<%= form_with(model: @pokemon) do |form| %>
+<%= simple_form_for(@pokemon) do |form| %>
   <div class="row">
     <div class="form-group col-lg-5">
-      <%= form.label :name, 'Nom', class: 'form-label' %>
-      <%= form.text_field :name, class: 'form-control' %>
+      <%= form.input :name, class: 'form-control', label: 'Nom' %>
     </div>
     <div class="form-group col-lg-5">
-      <%= form.label :number, 'Numéro', class: 'form-label' %>
-      <%= form.text_field :number, class: 'form-control' %>
+      <%= form.input :number, class: 'form-control', label: 'Numéro' %>
     </div>
     <div class="form-group col-lg-5">
-      <%= form.label :level, 'Niveau', class: 'form-label' %>
-      <%= form.text_field :level, class: 'form-control' %>
+      <%= form.input :level, class: 'form-control', label: 'Niveau' %>
     </div>
     <div class="form-group col-lg-5">
-      <%= form.label :health_points, 'Points de vie', class: 'form-label' %>
-      <%= form.text_field :health_points, class: 'form-control' %>
+      <%= form.input :health_points, class: 'form-control', label: 'Point de vie' %>
+    </div>
+    <div class="form-group col-lg-5">
+      <%= form.association :type, class: 'form-control', label: 'Type' %>
     </div>
   </div>
   <div class="actions">

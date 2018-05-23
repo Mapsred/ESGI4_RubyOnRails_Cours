@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   # Routes for pokemons
   resources :pokemons
 
-  # pokemons :pokemons do
-  #   member do
-  #     get :index
-  #   end
-  # end
+  # Routes for types
+  resources :types
+
 end

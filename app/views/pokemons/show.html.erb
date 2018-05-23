@@ -5,5 +5,14 @@
 <p><strong>Niveau :</strong> <%= @pokemon.level %> </p>
 <p><strong>HP :</strong> <%= @pokemon.health_points %> </p>
 
+<p>
+  <strong>Type : </strong>
+  <% type = @pokemon.type %>
+  <% if type.nil? %>
+    non défini.
+  <% else %>
+    <span class="badge" style="background-color: <%= type.color %>"><%= type.name %></span>
+  <% end %> %>
+</p>
 <a href="<%= pokemons_path %>" class="btn btn-default">Retour à la liste</a>
 <a href="<%= edit_pokemon_path @pokemon %>" class="btn btn-warning">Editer le pokémon</a>
