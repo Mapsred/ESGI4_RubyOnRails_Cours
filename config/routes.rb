@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :moves
   root 'home#index', as: 'home'
 
   # Routes for pokemons

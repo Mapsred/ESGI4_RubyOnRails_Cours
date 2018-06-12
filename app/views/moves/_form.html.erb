@@ -1,0 +1,18 @@
+<%= simple_form_for(@move) do |form| %>
+  <div class="row">
+    <div class="form-group col-lg-5">
+      <%= form.input :name, label: 'Nom', class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-lg-5">
+      <%= form.input :description, label: 'Description', class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-lg-6">
+      <%= form.association :type, label: 'Type', class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= form.submit 'Enregistrer', class: 'btn btn-primary' %>
+<% end %>
+<br>
