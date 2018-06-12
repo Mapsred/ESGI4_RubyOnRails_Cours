@@ -1,18 +1,20 @@
-<h1>Afficher un pokémon</h1>
+<h1> Le pokemon : </h1>
 
-<p><strong>Numéro :</strong> <%= @pokemon.number %> </p>
-<p><strong>Nom :</strong> <%= @pokemon.name %> </p>
-<p><strong>Niveau :</strong> <%= @pokemon.level %> </p>
-<p><strong>HP :</strong> <%= @pokemon.health_points %> </p>
+<p>Nom : <%= @pokemon.name %></p>
+<p>Level : <%= @pokemon.level %></p>
+<p>Number : <%= @pokemon.number %></p>
+<p>Health Points : <%= @pokemon.health_points %></p>
 
 <p>
-  <strong>Type : </strong>
   <% type = @pokemon.type %>
+  Type :
   <% if type.nil? %>
-    non défini.
+    Non défini.
   <% else %>
-    <span class="badge" style="background-color: <%= type.color %>"><%= type.name %></span>
-  <% end %> %>
+    <%= type_badge(type.name, type.color) %>
+  <% end %>
 </p>
-<a href="<%= pokemons_path %>" class="btn btn-default">Retour à la liste</a>
-<a href="<%= edit_pokemon_path @pokemon %>" class="btn btn-warning">Editer le pokémon</a>
+
+<p>
+  <%= link_to 'Retour à la liste des pokemons', pokemons_path, class: 'btn btn-default' %>
+</p>

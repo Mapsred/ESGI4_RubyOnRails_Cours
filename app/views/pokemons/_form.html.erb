@@ -1,22 +1,29 @@
 <%= simple_form_for(@pokemon) do |form| %>
   <div class="row">
     <div class="form-group col-lg-5">
-      <%= form.input :name, class: 'form-control', label: 'Nom' %>
+      <%= form.input :name, label: 'Nom', class: 'form-control' %>
     </div>
+
     <div class="form-group col-lg-5">
-      <%= form.input :number, class: 'form-control', label: 'Numéro' %>
+      <%= form.input :number, label: 'Numéro', class: 'form-control' %>
     </div>
+
     <div class="form-group col-lg-5">
-      <%= form.input :level, class: 'form-control', label: 'Niveau' %>
+      <%= form.input :level, label: 'Niveau', class: 'form-control' %>
     </div>
+
     <div class="form-group col-lg-5">
-      <%= form.input :health_points, class: 'form-control', label: 'Point de vie' %>
-    </div>
-    <div class="form-group col-lg-5">
-      <%= form.association :type, class: 'form-control', label: 'Type' %>
+      <%= form.input :health_points, label: 'Points de vie', class: 'form-control' %>
     </div>
   </div>
-  <div class="actions">
-    <%= form.submit 'Enregistrer', class: 'btn btn-primary' %>
+
+  <div class="row">
+    <div class="form-group col-lg-6">
+      <%= form.association :type, label: 'Type', class: 'form-control' %>
+    </div>
   </div>
+
+  <%= form.submit 'Enregistrer', class: 'btn btn-primary' %>
 <% end %>
+
+<br>

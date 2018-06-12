@@ -1,64 +1,46 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1>Liste des pokémons</h1>
-  </div>
-</div>
+<h1>La liste des pokemons</h1>
 
-<div class="row">
-  <div class="col-md-12">
-    <% if @pokemons.any? %>
-      <table class="table">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>Nom</th>
-          <th>Niveau</th>
-          <th>HP</th>
-          <th>
-            <div class="col-md-2 col-md-offset-10">Action</div>
-          </th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @pokemons.each do |pokemon| %>
-          <tr>
-            <td><%= pokemon.number %></td>
-            <td><%= pokemon.name %></td>
-            <td><%= pokemon.level %></td>
-            <td><%= pokemon.health_points %></td>
-            <td>
-              <div class="btn-group pull-right">
-                <a href="<%= pokemon_path pokemon %>" class="btn btn-success">
-                  Détails
-                </a>
-                <a href="<%= edit_pokemon_path pokemon %>" class="btn btn-info">
-                   Éditer
-                </a>
-                <%= link_to 'Supprimer', pokemon,
-                            method: :delete,
-                            data: {
-                                confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce Pokemon ?'
-                            },
-                            class: 'btn btn-danger'
-                %>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <div class="alert alert-info" role="alert">
-        Aucun pokemon. :(
-      </div>
+<% if @pokemons.any? %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @pokemons.each do |pokemon| %>
+      <tr>
+        <td><%= pokemon.id %></td>
+        <td><%= pokemon.name %></td>
+        <td>
+          <% if pokemon.type.nil? %>
+            &empty;
+          <% else %>
+            <%= type_badge pokemon.type.name, pokemon.type.color %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Afficher', pokemon, class: 'btn btn-info' %>
+          <%= link_to 'Modifier', edit_pokemon_path(pokemon), class: 'btn btn-warning' %>
+          <%= link_to 'Supprimer', pokemon, method: :delete,
+                      data: {
+                          confirm: 'Êtes-vous sûr(e) de vouloir supprimer ce Pokemon ?'
+                      },
+                      class: 'btn btn-danger' %>
+        </td>
+      </tr>
     <% end %>
-  </div>
-</div>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    Il n'y a pas de pokemon
+  </p>
+<% end %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-6">
-    <a href="<%= new_pokemon_path %>" type="button" class="btn btn-default pull-right">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un pokemon
-    </a>
-  </div>
-</div>
+<p>
+  <%= link_to 'Ajouter', new_pokemon_path, class: 'btn btn-warning' %>
+</p>

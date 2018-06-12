@@ -9,7 +9,7 @@ class PokemonsController < ApplicationController
   end
 
   def index
-    @pokemons = Pokemon.all
+    @pokemons = Pokemon.includes(:type)
   end
 
   def show
@@ -23,9 +23,9 @@ class PokemonsController < ApplicationController
   def create
     @pokemon = Pokemon.new pokemon_parameters
     if @pokemon.save
-      redirect_to pokemons_url
+      redirect_to @pokemon
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
@@ -34,12 +34,12 @@ class PokemonsController < ApplicationController
   end
 
   def update
-    if @pokemon.update_attributes pokemon_parameters
+    if @pokemon.update(pokemon_parameters)
       flash[:success] = 'Pokemon #' + params[:id] + ' updated !'
 
-      redirect_to pokemon_url @pokemon
+      redirect_to @pokemon
     else
-      render action: :edit
+      render 'edit'
     end
   end
 
@@ -49,8 +49,9 @@ class PokemonsController < ApplicationController
     redirect_to pokemons_url
   end
 
-  def pokemon_parameters
-    params.require(:pokemon).permit(:name, :number, :level, :health_points)
-  end
+  private
 
+  def pokemon_parameters
+    params.require(:pokemon).permit(:name, :level, :number, :type_id, :health_points)
+  end
 end

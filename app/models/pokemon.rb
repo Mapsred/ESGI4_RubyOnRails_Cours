@@ -2,7 +2,7 @@
 
 # Pokemon Model
 class Pokemon < ApplicationRecord
-  belongs_to :type
+  belongs_to :type, optional: true
   scope :short_name, -> { where('length(name) < 10') }
 
   def explicit_name
