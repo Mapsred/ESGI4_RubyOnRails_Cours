@@ -1,0 +1,13 @@
+<% if moves.any? %>
+  <% moves.each do |m| %>
+    <% if m.type.nil? %>
+      <%= link_to m.name, m %>
+    <% else %>
+      <%= link_to m, class: 'move-link' do %>
+        <%= type_badge(m.name, m.type.color) %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+  &empty;
+<% end %>

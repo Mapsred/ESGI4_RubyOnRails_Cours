@@ -4,6 +4,8 @@
 class Pokemon < ApplicationRecord
   belongs_to :type, optional: true
   scope :short_name, -> { where('length(name) < 10') }
+  has_many :pokemon_moves
+  has_many :moves, through: :pokemon_moves
 
   def explicit_name
     "Pokemon '#{name}'"

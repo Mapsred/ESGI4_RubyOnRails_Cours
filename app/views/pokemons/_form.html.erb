@@ -23,6 +23,12 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="form-group col-lg-6">
+      <%= form.association :moves, as: :check_boxes, label: 'Attaques', class: 'form-control' %>
+    </div>
+  </div>
+
   <%= form.submit 'Enregistrer', class: 'btn btn-primary' %>
 <% end %>
 

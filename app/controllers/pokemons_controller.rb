@@ -34,6 +34,7 @@ class PokemonsController < ApplicationController
   end
 
   def update
+    puts params
     if @pokemon.update(pokemon_parameters)
       flash[:success] = 'Pokemon #' + params[:id] + ' updated !'
 
@@ -52,6 +53,6 @@ class PokemonsController < ApplicationController
   private
 
   def pokemon_parameters
-    params.require(:pokemon).permit(:name, :level, :number, :type_id, :health_points)
+    params.require(:pokemon).permit(:name, :level, :number, :type_id, :health_points, :health_points, move_ids: [])
   end
 end

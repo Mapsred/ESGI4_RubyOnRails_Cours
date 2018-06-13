@@ -7,6 +7,7 @@
       <th>ID</th>
       <th>Name</th>
       <th>Type</th>
+      <th>Attaques</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -22,6 +23,7 @@
             <%= type_badge pokemon.type.name, pokemon.type.color %>
           <% end %>
         </td>
+        <td><%= render 'moves/moves_list', moves: pokemon.moves %></td>
         <td>
           <%= link_to 'Afficher', pokemon, class: 'btn btn-info' %>
           <%= link_to 'Modifier', edit_pokemon_path(pokemon), class: 'btn btn-warning' %>
